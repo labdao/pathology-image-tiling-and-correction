@@ -4,6 +4,7 @@ Paper: "Structure-Preserving Color Normalization and Sparse Stain Separation for
 """
 
 import os
+import sys
 from glob import glob
 
 import numpy as np
@@ -30,11 +31,11 @@ def normalize_images(image_path):
     normalizer = VahadaneStainNormalizer(target_path=target_image)
 
     # 3. normalize all the images
-    for image_path in tqdm(image_fnames):
+    for sing_image in tqdm(image_fnames):
 
         # a. load image
-        _, image_name = os.path.split(image_path)
-        image = np.array(Image.open(image_path))
+        _, image_name = os.path.split(sing_image)
+        image = np.array(Image.open(sing_image))
 
         imageData = np.array_split(image, 8, axis=1)
         # b. apply Vahadane stain normalization
@@ -45,18 +46,17 @@ def normalize_images(image_path):
             norm_image = Image.fromarray(np.uint8(norm_image))
             norm_image.save(
                 os.path.join(
-                    'output',
+                    image_path,
                     'normalized_images',
                     f'{count}_{image_name}'))
 
 
 if __name__ == "__main__":
 
-    # 1. download dummy images
-    download_example_data('output')
-
+    path = sys.argv[1]
+    
     # 2. create output directory
-    os.makedirs(os.path.join('output', 'normalized_images'), exist_ok=True)
+    os.makedirs(os.path.join(path, 'normalized_images'), exist_ok=True)
 
     # 3. normalize images
-    normalize_images(image_path=os.path.join('output', 'images'))
+    normalize_images(path)
