@@ -1,0 +1,4 @@
+numpy
+histocartograhy
+tqdm
+pillow
