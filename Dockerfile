@@ -9,4 +9,4 @@ COPY . /usr/src/app
 # install the dependencies
 RUN pip install -r /usr/src/app/requirements.txt 
 # open a shell when launching the container
-CMD ["bash"]
+CMD ["bash"] 

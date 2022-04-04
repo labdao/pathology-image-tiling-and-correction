@@ -1,4 +1,5 @@
 numpy
-histocartograhy
+histocartography
 tqdm
 pillow
+h5py
