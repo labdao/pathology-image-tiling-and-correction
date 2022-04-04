@@ -3,3 +3,14 @@ histocartography
 tqdm
 pillow
 h5py
+pandas
+scikit-learn
+scipy
+torch
+matplotlib
+seaborn
+torchvision
+opencv-python
+scikit-image
+dgl
+PyYAML
