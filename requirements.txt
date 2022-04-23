@@ -11,6 +11,9 @@ matplotlib
 seaborn
 torchvision
 opencv-python
-scikit-image
+scikit-image==0.18.2
 dgl
 PyYAML
+torch
+torchvision
+torchaudio
