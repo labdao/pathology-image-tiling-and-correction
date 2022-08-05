@@ -1,6 +1,5 @@
 # choose a base image, we use a lightweight docker container running python3 on ubuntu
-FROM ubuntu:jammy 
-FROM python:3.7
+FROM --platform=linux/amd64 python:3.7
 # had to specify python version because 3.10 isn't compatible with packages, and is the default
 
 # install basic packages
