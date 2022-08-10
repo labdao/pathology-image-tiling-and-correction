@@ -20,7 +20,7 @@ def normalize_images(image_path):
     we use the first image as target for estimating normalization
     params.
     """
-
+    
     # 1. get image path
     image_fnames = glob(os.path.join(image_path, '*.png'))
 
