@@ -17,6 +17,7 @@ from fastapi import FastAPI, File, UploadFile
 
 app = FastAPI()
 
+# need to match the first name "files" for each uploaded file
 @app.post("/normalize")
 def normalize_images(files: List[UploadFile] = File(description="Images to process")):
     """
@@ -24,6 +25,7 @@ def normalize_images(files: List[UploadFile] = File(description="Images to proce
     we use the first image as target for estimating normalization
     params.
     """
+    # return {"filename": file.filename}
     for file in files:
         return {"filenames": [file.filename for file in files]}
     # 1. get image path
@@ -55,6 +57,9 @@ def normalize_images(files: List[UploadFile] = File(description="Images to proce
     #                 'normalized_images',
     #                 f'{count}_{image_name}'))
 
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
 
 if __name__ == "__main__":
 
