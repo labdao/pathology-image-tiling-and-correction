@@ -41,7 +41,7 @@ async def normalize_images(files: List[UploadFile] = File(description="Images to
         img_dimensions = str(img.shape)
         return_imgs = processImage(img)
         
-        normalize_images = {file.filename : return_imgs}
+        normalize_images[file.filename] = return_imgs
         #return {"normalized" : img[0]}
         # headers = {'Content-Disposition': 'inline; filename="test.png"'}
         # return Response(return_imgs[0], headers=headers, media_type='image/png')
@@ -49,11 +49,11 @@ async def normalize_images(files: List[UploadFile] = File(description="Images to
         # return {filename: file.filename}
 
         # return {"filenames": [file.filename for file in files]}
-    
+        
     zipFile = zipFiles(normalize_images)
 
     resp = Response(zipFile.getvalue(), media_type="application/x-zip-compressed", headers={
-        'Content-Disposition': f'attachment;filename=yee.zip'
+        'Content-Disposition': 'attachment;filename=yee.zip'
     })
 
     return resp
