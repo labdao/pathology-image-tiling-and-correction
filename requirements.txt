@@ -1,5 +1,6 @@
 fastapi
 python-multipart
+uvicorn
 numpy
 histocartography
 tqdm
