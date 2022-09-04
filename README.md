@@ -9,7 +9,7 @@ Run the app locally with: `uvicorn tileImageAndCorrect:app --reload --host "0.0.
 1. Inside the directory for this repository, run:
 
     ```shell
-    docker build -t pathology-image-tiling-and-correction
+    docker build -t pathology-image-tiling-and-correction .
     ```
 
 ## Running the container
@@ -22,6 +22,7 @@ and it should be running at http://localhost:8000 (or replace `localhost` with t
 ## Processing data with Postman
 
 1. In Postman, craft a request with the following properties:
+
     | Postman parameter | Value |
     | --- | --- |
     | Request Type | `POST` |
