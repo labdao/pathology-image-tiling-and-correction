@@ -42,26 +42,14 @@ async def normalize_images(files: List[UploadFile] = File(description="Images to
         return_imgs = processImage(img)
         
         normalize_images[file.filename] = return_imgs
-        #return {"normalized" : img[0]}
-        # headers = {'Content-Disposition': 'inline; filename="test.png"'}
-        # return Response(return_imgs[0], headers=headers, media_type='image/png')
-        # return {"files": return_imgs}
-        # return {filename: file.filename}
 
-        # return {"filenames": [file.filename for file in files]}
-        
     zipFile = zipFiles(normalize_images)
 
     resp = Response(zipFile.getvalue(), media_type="application/x-zip-compressed", headers={
-        'Content-Disposition': 'attachment;filename=yee.zip'
+        'Content-Disposition': 'attachment;filename=normalizedAndSplitPictures.zip'
     })
 
     return resp
-
-
-    # headers = {'Content-Disposition': 'inline', 'filename' : "test.png"}
-    # print(return_imgs[1])
-    # return Response(return_imgs[1].tobytes(), headers=headers, media_type='image/png')
 
 def zipFiles(fileDict):
     zip_filename = "normalized_images.zip"
@@ -89,49 +77,15 @@ def processImage(image):
     for count, tiledImage in enumerate(splitImage):
         norm_image = normalizer.process(tiledImage)
 
-        # c. save the normalized image
-        # norm_image
-        # norm_image = Image.fromarray(np.uint8(norm_image))
-        # print(norm_image)
         _, encoded_img = cv2.imencode('.PNG', norm_image)
 
-    # encoded_img = base64.b64encode(encoded_img)
         splitImages.append(encoded_img)
     
     return splitImages
 
-    # 1. get image path
-    # image_fnames = glob(os.path.join(image_path, '*.png'))
-
-    # # 2. define stain normalizer. If no target target is provided,
-    # # defaults ones are used. Note: Macenko normalization can be
-    # # defined in a similar way.
-    # target_image = image_fnames.pop(0)  # use the 1st image as target
-    # normalizer = VahadaneStainNormalizer(target_path=target_image)
-
-    # # 3. normalize all the images
-    # for sing_image in tqdm(image_fnames):
-
-    #     # a. load image
-    #     _, image_name = os.path.split(sing_image)
-    #     image = np.array(Image.open(sing_image))
-
-    #     imageData = np.array_split(image, 8, axis=1)
-    #     # b. apply Vahadane stain normalization
-    #     for count, tiledImage in enumerate(imageData):
-    #         norm_image = normalizer.process(tiledImage)
-
-    #         # c. save the normalized image
-    #         norm_image = Image.fromarray(np.uint8(norm_image))
-    #         norm_image.save(
-    #             os.path.join(
-    #                 image_path,
-    #                 'normalized_images',
-    #                 f'{count}_{image_name}'))
-
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "If you want to normalize the images, make sure to send your images to /normalize"}
 
 if __name__ == "__main__":
 
