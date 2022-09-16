@@ -33,3 +33,11 @@ and it should be running at http://localhost:8000 (or replace `localhost` with t
   
 1. Press the "Send" button
 1. The result should be a .zip file, so when the result is ready (it will look like random letters and numbers in the bottom half of the screen), press "Save Response" on the right side of the screen. Save the zip file.
+
+## Processing data with bacalhau 
+the examples images have been pinned to IPFS using Pinata:
+```
+QmTr26AJDQMyxEJacL2ph7N71SAgRJaqj4USt4bMiE4Jff
+QmX4kSU5W5Lnjjx9ZhBezonMdKQiy3zbJfkSLfUE4cTDMd
+QmQr9LBQhmCUzRXkZZeN5nVZriavubLpBffFv5WkBFNUFU
+```
