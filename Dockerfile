@@ -23,4 +23,4 @@ COPY . /src/
 # expose port for FastAPI
 EXPOSE 8000
 # listen for requests when launched
-CMD ["/bin/bash", "-c", "uvicorn tileImageAndCorrect:app --reload --host \"0.0.0.0\" --port 8000"] 
+CMD ["/bin/bash", "-c", "uvicorn main:app --reload --host \"0.0.0.0\" --port 8000"] 
