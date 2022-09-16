@@ -36,6 +36,8 @@ and it should be running at http://localhost:8000 (or replace `localhost` with t
 
 ## Processing data with bacalhau 
 the examples images have been pinned to IPFS using Pinata:
+```
 QmTr26AJDQMyxEJacL2ph7N71SAgRJaqj4USt4bMiE4Jff
 QmX4kSU5W5Lnjjx9ZhBezonMdKQiy3zbJfkSLfUE4cTDMd
 QmQr9LBQhmCUzRXkZZeN5nVZriavubLpBffFv5WkBFNUFU
+```
