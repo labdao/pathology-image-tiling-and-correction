@@ -17,7 +17,7 @@ RUN apt-get install -y ffmpeg libsm6 libxext6
 WORKDIR /src
 COPY requirements.txt /src/
 # install the dependencies
-RUN pip install -r /usr/src/app/requirements.txt 
+RUN pip install -r /src/requirements.txt 
 # transfer rest of data - separating the requirment install from the rest of the data can save time when building the image
 COPY . /src/
 # expose port for FastAPI
