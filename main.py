@@ -67,32 +67,42 @@ def zipFiles(fileDict):
     return s
 
 def processImage(image):
-
     normalizer = VahadaneStainNormalizer()
-
     splitImage = np.array_split(image, 8, axis=1)
-
     splitImages = []
-
     for count, tiledImage in enumerate(splitImage):
         norm_image = normalizer.process(tiledImage)
-
         _, encoded_img = cv2.imencode('.PNG', norm_image)
-
         splitImages.append(encoded_img)
-    
     return splitImages
 
 @app.get("/")
 async def root():
     return {"message": "If you want to normalize the images, make sure to send your images to /normalize"}
 
+# create a quick function for local testing and bacalhau
+def main(filename):
+    # load image
+    image = cv2.imread(filename)
+    basename = os.path.basename(filename)
+    basename = os.path.splitext(basename)[0]
+    # process image
+    split_images = processImage(image)
+    # iterate over the split images and save them
+    for count, tiled_image in enumerate(split_images):
+        decoded_image = cv2.imdecode(tiled_image, cv2.IMREAD_COLOR)
+        cv2.imwrite('/outputs/' + basename + "_normalized_tile_" + str(count) + ".png", decoded_image)
+    # print success message
+    print("Images processes and saved to /outputs")
+
+
 if __name__ == "__main__":
 
     path = sys.argv[1]
     
     # 2. create output directory
-    os.makedirs(os.path.join(path, 'normalized_images'), exist_ok=True)
+    # os.makedirs(os.path.join(path, 'normalized_images'), exist_ok=True)
+    os.makedirs('/outputs', exist_ok=True)
 
     # 3. normalize images
-    normalize_images(path)
+    main(path)
