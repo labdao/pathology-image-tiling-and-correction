@@ -9,13 +9,13 @@ Run the app locally with: `uvicorn tileImageAndCorrect:app --reload --host "0.0.
 1. Inside the directory for this repository, run:
 
     ```shell
-    docker build -t pathology-image-tiling-and-correction .
+    docker build -t vahadane_norm_and_tile .
     ```
 
 ## Running the container
 Run the app in Docker via:
 
-    docker run -d -p 8000:8000 pathology-image-tiling-and-correction:latest
+    docker run -d -p 8000:8000 vahadane_norm_and_tile:latest
 
 and it should be running at http://localhost:8000 (or replace `localhost` with the IP/DNS name of whichever computer is running the container)
 
