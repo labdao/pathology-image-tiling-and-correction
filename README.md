@@ -1,14 +1,31 @@
-# pathology-image-tiling-and-correction
+# Vahadane Stain Normalization
+
+[![Docker](https://github.com/openlab-apps/vahadane_norm_and_tile/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/openlab-apps/vahadane_norm_and_tile/actions/workflows/docker-publish.yml)
+
+[Histocartography paper](https://arxiv.org/pdf/2107.10073.pdf) - [Vahadane Stain Normalization Paper](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7460968)
+
+<hr />
+
+Vahadane Stain Normalization is one of the most popular preprocessing methods in digital pathology. As stated in the paper, **"this normalizer is a solution for stain separation and color normaization, which preserves biological structure information by modelling stain density maps"**
+
+## What does this container do?
+
+This container will expose a port on your machine/cloud instance which will accept images via an API, and return a .zip file containing the normalized and split images. 
+
+More technically, each image passed into the API will be split into 8, separate pieces (feature added soon to dynamically change this). Each image will then be passed in to the Vahadane Stain Normalization algorithm (learn more [here](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7460968)) (feature added soon to dynamically change the stain algorithm used). The images will then be zipped and sent in a file titled ```normalizedAndSplitPictures.zip```. Check out ```main.py``` for more details
+
+We have 3 images in the ```images/``` directory where you can test out the container. We also have the files on Bacalhau, which you can learn more about [here](#Processing-data-with-bacalhau). 
+
 
 ## Running this app locally
-Run the app locally with: `uvicorn tileImageAndCorrect:app --reload --host "0.0.0.0"`
+Run the app locally with: `uvicorn main:app --reload --host "0.0.0.0"`
 
 ## Building the container image
 
 1. Clone this repository
 1. Inside the directory for this repository, run:
 
-    ```shell
+    ```
     docker build -t vahadane_norm_and_tile .
     ```
 
