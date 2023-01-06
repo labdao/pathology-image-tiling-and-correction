@@ -1,8 +1,8 @@
 # [Vahadane Stain Normalization](https://arxiv.org/pdf/2107.10073.pdf)
 
-´´´
+```
 Jaume, G., Pati, P., Anklin, V., Foncubierta, A., & Gabrani, M. (2021). HistoCartography: A Toolkit for Graph Analytics in Digital Pathology (arXiv:2107.10073). arXiv. http://arxiv.org/abs/2107.10073
-´´´
+```
 
 [![Docker](https://github.com/openlab-apps/vahadane_norm_and_tile/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/openlab-apps/vahadane_norm_and_tile/actions/workflows/docker-publish.yml)
 
